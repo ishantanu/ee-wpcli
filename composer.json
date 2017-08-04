@@ -1,0 +1,19 @@
+{
+    "name": "iamShantanu101/ee-wpcli",
+    "description": "EasyEngine CRUD using wp-cli",
+    "type": "wp-cli-package",
+    "license": "GPL 2.0",
+    "authors": [
+        {
+            "name": "iamShantanu101",
+            "email": "shantanud106@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "files": ["ee-site.php"]
+    }
+}
+
