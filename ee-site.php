@@ -292,7 +292,8 @@ class EE_Site_Delete_Command extends WP_CLI_Command {
     }
 
     public function deletedb($name) {
-        $db      = new SQLite3('/Users/shantanudeshpande/test-wpcli/ee.db');
+	$dbdir = getcwd();
+        $db        = new SQLite3("$dbdir/ee.db");
         $result  = $db->query("DELETE from ee where site_name = '$name'");
         $errcode = $db->lastErrorCode();
         if ($errcode) {
@@ -489,7 +490,8 @@ class EE_Site_Update_Command extends WP_CLI_Command
      */
 
     public function updatedb($name, $site_type, $cache_type, $PHP_flag, $Mysql_flag) {
-        $db = new SQLite3('/Users/shantanudeshpande/test-wpcli/ee.db');
+	$dbdir     = getcwd();
+        $db        = new SQLite3("$dbdir/ee.db");
         $site_name = $name;
         $result = $db->exec(
             "UPDATE ee set 
@@ -641,7 +643,8 @@ class EE_Site_Info_Command extends WP_CLI_Command {
             WP_CLI::error('Please specify site name');
         } else {
             $site_name = $arg[0];
-            $db = new SQLite3('/Users/shantanudeshpande/test-wpcli/ee.db');
+            $dbdir = getcwd();
+            $db        = new SQLite3("$dbdir/ee.db");
             $result = $db->query(
                 "SELECT * FROM ee WHERE ee.site_name = '$site_name'");
 
