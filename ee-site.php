@@ -186,8 +186,8 @@ class EE_Site_Create_Command extends WP_CLI_Command {
             die();
         }
 
-        $result    = $db->query("INSERT OR REPLACE INTO ee (ID, site_name, site_type, cache_type, php_flag, mysql_flag) VALUES
-                               (NULL , '$site_name','$site_type','$cache_type','$PHP_flag','$Mysql_flag')");
+        $result    = $db->query("INSERT OR REPLACE INTO ee (site_name, site_type, cache_type, php_flag, mysql_flag) VALUES
+                               ('$site_name','$site_type','$cache_type','$PHP_flag','$Mysql_flag')");
 
         $errcode = $db->lastErrorCode();
         if ($errcode) {
