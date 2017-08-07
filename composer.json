@@ -1,5 +1,5 @@
 {
-    "name": "iamShantanu101/ee-wpcli",
+    "name": "iam-shantanu101/ee-wpcli",
     "description": "EasyEngine CRUD using wp-cli",
     "type": "wp-cli-package",
     "license": "GPL 2.0",
