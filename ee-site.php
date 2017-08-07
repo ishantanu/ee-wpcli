@@ -587,12 +587,29 @@ class EE_Site_List_Command extends WP_CLI_Command
 
     public function listfiles()
     {
-        $webroot_path = getenv('WEBROOT_PATH');
-        $files = preg_grep('/^([^.])/', scandir($webroot_path));
-        foreach ($files as $key => $value) {
-            //echo "$value\n";
-            WP_CLI::line( WP_CLI::colorize( "%c" . $value . "%n " ) );
+	$dbdir  = getcwd();
+
+        $db     = new SQLite3("$dbdir/ee.db");
+
+        $result = $db->query(
+                "SELECT site_name FROM ee ");
+
+        $errcode = $db->lastErrorCode();
+        if ($errcode) {
+            die();
+            $db->close();
         }
+
+        while ( $row = $result->fetchArray() ) {
+                WP_CLI::line(WP_CLI::colorize("%c" . $row['site_name'] . "%n " ) );
+
+        }
+        //$webroot_path = getenv('WEBROOT_PATH');
+        //$files = preg_grep('/^([^.])/', scandir($webroot_path));
+        //foreach ($files as $key => $value) {
+            //echo "$value\n";
+          //  WP_CLI::line( WP_CLI::colorize( "%c" . $value . "%n " ) );
+        //}
 
     }
 }
