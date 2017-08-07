@@ -173,7 +173,7 @@ class EE_Site_Create_Command extends WP_CLI_Command {
         $db        = new SQLite3("$dbdir/ee.db");
 
         $create    = $db->query("CREATE TABLE IF NOT EXISTS ee (
-                                        ID            INT         PRIMARY KEY NOT NULL,
+                                        ID            INT         PRIMARY KEY AUTOINCREMENT,
                                         site_name     CHAR(50)                NOT NULL,
                                         site_type     CHAR(20)                        ,
                                         cache_type    CHAR(20)                        ,
